@@ -2,7 +2,19 @@ import tkinter as tk
 from datetime import datetime
 
 class ErrorDialog(tk.Toplevel):
+    """
+    A custom error handler.
+    """
     def __init__(self, parent, title, message):
+
+        """
+        Initialisation of the error dialog.
+
+        Parameters:
+            parent (tkinter widget): The parent widget.
+            title (str): The title of the dialog.
+            message (str): The error message.
+        """
         tk.Toplevel.__init__(self, parent)
         self.title(title)
         self.geometry("200x100")
@@ -42,7 +54,7 @@ class Application(tk.Frame):
         self.year_label.pack()
         self.year_var = tk.StringVar(self)
         self.year_var.set('Year')
-        self.year_option = tk.OptionMenu(self, self.year_var, *[str(year) for year in range(1900, datetime.now().year+1)])
+        self.year_option = tk.OptionMenu(self, self.year_var, *[str(year) for year in range(1980, datetime.now().year+1)])
         self.year_option.pack()
 
         self.month_label = tk.Label(self, text="Month")
@@ -82,8 +94,9 @@ class Application(tk.Frame):
 
         print(f"Name: {name}, Birthday: {date}")
 
-root = tk.Tk()
-app = Application(master=root)
-app.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = Application(master=root)
+    app.mainloop()
 
 
